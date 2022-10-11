@@ -1,0 +1,31 @@
+{
+	"name": "apiproxy",
+	"version": "0.0.1",
+	"type": "module",
+	"description": "APIproxy",
+	"main": "index.mjs",
+	"scripts": {
+		"start": "nodemon --es-module-specifier-resolution=node ./src/index.mjs",
+		"dev": "export NODE_ENV=development && nodemon --es-module-specifier-resolution=node ./src/index.mjs",
+		"prod": "export NODE_ENV=production && nodemon --es-module-specifier-resolution=node ./src/index.mjs"
+	},
+	"keywords": [
+		"fastify",
+		"API",
+		"proxy"
+	],
+	"repository": "https://github.com/cywhale/apiproxy",
+	"author": "cywhale",
+	"license": "MIT",
+	"dependencies": {
+		"@fastify/cors": "^8.1.0",
+		"@fastify/env": "^4.1.0",
+		"@fastify/http-proxy": "^8.2.3",
+		"desm": "^1.3.0",
+		"fastify": "^4.8.1",
+		"fs": "^0.0.1-security"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.20"
+	}
+}
