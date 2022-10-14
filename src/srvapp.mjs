@@ -1,6 +1,9 @@
+//import AutoLoad from '@fastify/autoload'
 import Cors from '@fastify/cors'
-import Proxy from "@fastify/http-proxy"
+//import ReplyFrom from '@fastify/reply-from'
+//import Proxy from "@fastify/http-proxy"
 import { join } from 'desm'
+import upstreamapp from './upstream.mjs'
 
 const BASE = 'node'
 
@@ -32,10 +35,13 @@ export default async function (fastify, opts) {
     }
   })
 
-  fastify.register(Proxy, {
-    upstream: "https://api.obis.org/v3",
-    prefix: `/${BASE}/obis`,
-    undici: true,
-  })
+  fastify.register(upstreamapp)
+/*fastify.register(ReplyFrom)
+
+  fastify.register(AutoLoad, {
+    dir: join(import.meta.url, 'routes'),
+    dirNameRoutePrefix: false,
+    options: Object.assign({}, opts)
+  })*/
 }
 

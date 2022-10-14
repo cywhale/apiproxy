@@ -8,14 +8,14 @@ import srvapp from './srvapp.mjs'
 const configSecServ = async (certDir='../config') => {
   const readCertFile = (filename) => {
     return readFileSync(join(import.meta.url, certDir, filename))
-  };
+  }
   try {
     const [key, cert] = await Promise.all(
-      [readCertFile('privkey.pem'), readCertFile('fullchain.pem')]);
-    return {key, cert, allowHTTP1: true};
+      [readCertFile('privkey.pem'), readCertFile('fullchain.pem')])
+    return {key, cert, allowHTTP1: true}
   } catch (err) {
-    console.log('Error: certifite failed. ' + err);
-    process.exit(1);
+    console.log('Error: certifite failed. ' + err)
+    process.exit(1)
   }
 }
 
@@ -41,10 +41,11 @@ const startServer = async () => {
     },
     schema: {
       type: 'object',
-      required: ['COOKIE_SECRET','DOMAIN'],
+      required: ['DOMAIN'], //'BIOQRY_HOST','BIOQRY_BASE'],
       properties: {
-        COOKIE_SECRET: { type: 'string' },
-        DOMAIN: { type: 'string' }
+        DOMAIN: { type: 'string' },
+        //BIOQRY_HOST: { type: 'string' },
+        //BIOQRY_BASE: { type: 'string' }
       }
     }
   }).ready((err) => {
